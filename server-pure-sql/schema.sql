@@ -1,9 +1,10 @@
 
 DROP DATABASE IF EXISTS chat;
 
-CREATE DATABASE chatter;
+CREATE DATABASE chat;
 
-USE chatter;
+USE chat;
+
 
 DROP TABLE IF EXISTS messages;
 
@@ -12,15 +13,12 @@ CREATE TABLE messages (
    username VARCHAR(20) NOT NULL,
    roomname VARCHAR(20),
    text VARCHAR(100) NOT NULL,
-  PRIMARY KEY (objectId)
+  PRIMARY KEY (objectID)
 );
 
 /* Create other tables and define schemas for them here! */
 
-CREATE TABLE users (
-  username VARCHAR(20) NOT NULL,
- PRIMARY KEY (username)
-);
+
 
 
 /*  Execute this file from the command line by typing:
