@@ -31,9 +31,9 @@ exports.post = function (req, callback) {
   };
 
   dbConnection.query('insert into messages (username, roomname, text) values ("' + req.body.username + '", "' + req.body.roomname + '", "' + req.body.text + '")',
-function (err) {
-    if (err) throw err;
-    callback()
-});
+    function (err) {
+      if (err) throw err;
+      callback()
+  });
 };
 

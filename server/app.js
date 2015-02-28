@@ -1,6 +1,21 @@
 var express = require('express');
 var db = require('./db');
 
+// OPTIONS requests
+var allowCrossDomain = function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
+
+    // intercept OPTIONS method
+    if ('OPTIONS' == req.method) {
+      res.send(200);
+    }
+    else {
+      next();
+    }
+};
+
 // Middleware
 var morgan = require('morgan');
 var parser = require('body-parser');
@@ -20,6 +35,8 @@ app.use(parser.json());
 
 // Set up our routes
 app.use("/classes", router);
+
+app.use(allowCrossDomain);
 
 // Serve the client files
 app.use(express.static(__dirname + "/../client"));
